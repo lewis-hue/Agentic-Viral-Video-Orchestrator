@@ -4,84 +4,97 @@
 
 ---
 
+## 🎬 Live Demo  
+▶️ **Watch here:** [https://youtu.be/ZyP000IhtPc](https://youtu.be/ZyP000IhtPc)
+
+---
+
 ## 📘 Overview
 
-**AVVO** (Agentic Viral Video Orchestrator) is an **AI-driven, agentic automation system** designed to autonomously **discover viral trends**, **generate short-form video content**, **publish across multiple social platforms**, and **learn from performance feedback** to optimize future outputs.
+**AVVO (Agentic Viral Video Orchestrator)** is an **AI-powered multi-agent automation system** that autonomously **discovers viral trends**, **creates short-form video content**, **publishes across social platforms**, and **learns from audience engagement** to improve future outputs.
 
-This project integrates **Generative AI**, **automation engineering**, and **agentic system design** to create a *living, self-improving video ecosystem*—ideal for media companies, growth teams, and AI-first content studios such as **Viralish**.
+It blends **Generative AI**, **automation engineering**, and **reinforcement optimization** into a unified platform — the kind of system that powers viral content pipelines for media teams like **Viralish**.
 
 ---
 
 ## 🧩 Core Architecture
 
-AVVO is composed of **six collaborative AI agents**, each orchestrated through asynchronous pipelines, REST APIs, and event-driven tasks using **FastAPI**, **Celery**, and **Redis**.
+AVVO runs on **seven AI agents**, coordinated through **FastAPI**, **Celery**, and **Redis** for distributed orchestration. Each agent handles a key stage of the AI video pipeline.
 
-| Agent | Responsibility | Key Tools / APIs |
-|--------|----------------|------------------|
-| **Trend Discovery Agent** | Scans TikTok, YouTube Shorts, and Instagram Reels for emerging trends. | BeautifulSoup, ScraperAPI, OpenAI Embeddings |
-| **Story Ideation Agent** | Generates script outlines, hooks, and storytelling angles. | GPT-4, LangChain, FAISS |
-| **Video Generation Agent** | Produces videos using multimodal AI tools. | RunwayML, Sora, Pika Labs, ElevenLabs |
-| **Feedback & Optimization Agent** | Analyzes engagement metrics and refines pipelines. | Pandas, FastAPI, LangSmith |
-| **Publisher Agent** | Automates video publishing to social platforms. | Cloudinary, Zapier Webhooks, Buffer API |
-| **Documentation & Versioning Layer** | Logs all versions, iterations, and datasets for reproducibility. | PostgreSQL, Notion API |
+| Agent | Function | Key Integrations |
+|--------|-----------|------------------|
+| **1. Trend Discovery Agent** | Scans TikTok, YouTube Shorts, and Instagram Reels for emerging trends using virality scoring. | Gemini 2.5-Flash, FAISS, Speech-to-Text |
+| **2. Story Ideation Agent** | Converts trending topics into structured video scripts. | Gemini AI, JSON prompt templates |
+| **3. Video Generation Agent** | Produces short-form videos with scene orchestration, voiceovers, and sound design. | Vertex AI Veo, Google TTS, FFmpeg |
+| **4. Optimization & Feedback Agent** | Tracks engagement and optimizes prompt logic using reinforcement learning. | Contextual Bandit Model, Pandas |
+| **5. Publisher Agent** | Automates cross-platform posting using Buffer and Zapier. | Buffer API, Cloudinary, Zapier Webhooks |
+| **6. Brand Safety Agent** | Ensures ethical and brand-safe video generation. | Gemini AI Classifier |
+| **7. Documentation Agent** | Automatically documents changes, updates, and runs. | Markdown + PostgreSQL |
 
 ---
 
 ## ⚙️ Tech Stack
 
 ### **Backend**
-- **FastAPI (Python)** — Lightweight REST framework for AI and automation pipelines.  
-- **Celery + Redis** — Distributed task queues and asynchronous job scheduling.  
-- **PostgreSQL** — Persistent relational data storage for trends, scripts, and logs.  
-- **FAISS** — Vector database for semantic search and similarity clustering.  
-- **LangChain + OpenAI APIs** — LLM-driven reasoning, prompt chaining, and tool orchestration.  
-- **Zapier Webhooks** — Event-based communication with publishing and analytics services.
+- **FastAPI (Python 3.12)** – RESTful API gateway and orchestration layer  
+- **Celery + Redis** – Task queue and async job execution for distributed AI agents  
+- **PostgreSQL** – Structured data storage for users, trends, and analytics  
+- **FAISS Vector Database** – Semantic trend clustering and retrieval  
+- **LangChain + Gemini API** – Agentic reasoning and content ideation  
+- **Zapier Webhooks** – Event-driven communication for publishing automation  
 
 ### **Frontend**
-- **React + Next.js** — Dashboard for monitoring AI agents, tasks, and trends.  
-- **TailwindCSS + Shadcn/UI** — Modern, responsive UI components.  
-- **Recharts** — Interactive data visualization for engagement metrics and trend tracking.
+- **React 19.2 + TypeScript** – Frontend interface and dashboards  
+- **TailwindCSS + Shadcn/UI** – Responsive design and UI components  
+- **Recharts** – Interactive analytics and visualization  
 
 ### **Cloud & DevOps**
-- **Docker + Kubernetes** — Containerized, scalable deployment.  
-- **AWS / GCP** — Cloud infrastructure for hosting, storage, and compute scaling.  
-- **GitHub Actions** — CI/CD pipelines for testing and continuous deployment.  
+- **Docker + Docker Compose** – Containerized microservices  
+- **AWS / GCP** – Cloud infrastructure for scaling  
+- **GitHub Actions** – CI/CD automation pipeline  
 
 ### **Media & Automation**
-- **Cloudinary** — Media storage and automatic CDN generation for videos.  
-- **Buffer API** — Scheduled posting to TikTok, YouTube Shorts, and Instagram Reels.  
-- **Zapier Webhooks** — Middleware layer for integrating publishing and feedback events.
+- **Cloudinary** – Video storage, transformation, and public URL generation  
+- **Zapier Webhooks** – Connects backend to Buffer and analytics feedback  
+- **Buffer API** – Automated social media posting to TikTok, YouTube, and Instagram  
+- **FFmpeg + OpenCV** – Video editing, stitching, and compression  
 
 ---
 
-## 🧠 Logic Flow
+## 🧠 End-to-End Logic Flow
 
 ### 1️⃣ Trend Discovery
-- **Celery** triggers scheduled crawlers across TikTok, YouTube Shorts, and Reels.  
-- Metadata (hashtags, views, captions) is embedded using **OpenAI embeddings**.  
-- Trends are clustered via **FAISS** and ranked using a **LangChain reasoning chain**.  
-- Top-performing topics are stored in **PostgreSQL** for script generation.
+- Scheduled **Celery jobs** crawl and analyze TikTok, YouTube Shorts, and Instagram posts.  
+- Virality signals (views, comments, keywords) are vectorized with **FAISS**.  
+- **Gemini AI** scores each trend (1–100) and ranks by predicted viral potential.  
 
 ### 2️⃣ Story Ideation
-- The **Ideation Agent** uses GPT-4 to generate scripts and storyboards.  
-- Each script is evaluated for engagement, clarity, and keyword potential.  
-- High-performing scripts are queued for production by **Celery workers**.
+- Selected trends are passed to **Gemini 2.5-flash** for story scripting.  
+- AI generates multi-scene scripts with hooks, CTAs, and timestamps.  
+- Scripts are stored in **PostgreSQL** and versioned by the Documentation Agent.
 
 ### 3️⃣ Video Generation
-- **RunwayML**, **Sora**, and **Pika Labs APIs** generate the video clips.  
-- **ElevenLabs** produces voiceovers and sound design.  
-- Final outputs are uploaded to **Cloudinary**, which returns public CDN URLs.
+- Each script is processed by the **Dynamic Shot Orchestrator** (Python).  
+- Video scenes are generated using **Vertex AI Veo**, **Google Text-to-Speech**, and **AI music generation**.  
+- Final outputs are stitched with **FFmpeg** and uploaded to **Cloudinary**, generating a public CDN URL.
 
-### 4️⃣ Automated Publishing
-- Once a video is uploaded, the backend emits a **Zapier webhook** event.  
-- Zapier receives metadata (title, hashtags, URL) and triggers **Buffer** for posting.  
-- Buffer schedules or publishes instantly to **TikTok**, **YouTube Shorts**, and **Instagram Reels**.  
-- Posting confirmations are logged in **PostgreSQL** for version tracking.
+### 4️⃣ Automated Publishing (Buffer + Zapier + Cloudinary)
+- Once Cloudinary returns a video URL, the backend triggers a **Zapier webhook**.  
+- Zapier receives metadata (video title, caption, tags, and public URL).  
+- Zapier triggers **Buffer API**, which schedules and posts videos automatically to:
+  - **TikTok**
+  - **YouTube Shorts**
+  - **Instagram Reels**  
+- Publishing confirmations are logged in **PostgreSQL**, ensuring version control and traceability.
 
 ### 5️⃣ Feedback & Optimization
-- Engagement metrics (views, likes, shares, CTR) are fetched from platform APIs.  
-- Data is stored and processed by the **Optimization Agent**.  
-- The agent updates the **prompt weights and discovery criteria**, creating a continuous improvement loop.
+- Platform analytics APIs send post-performance data (views, likes, CTR) back via Zapier.  
+- The **Optimization Agent** applies a contextual bandit learning algorithm to improve:
+  - Hook structure
+  - Caption tone
+  - Music and pacing
+  - Visual consistency  
+- The system **learns and updates its strategy autonomously** over time.
 
 ---
 
@@ -92,18 +105,18 @@ flowchart TD
 
 A[Trend Discovery Agent] --> B[Story Ideation Agent]
 B --> C[Video Generation Agent]
-C --> D[Cloudinary Upload]
-D --> E[Zapier Webhook Event]
-E --> F[Buffer API - Automated Posting]
-F --> G[Platform Analytics APIs]
+C --> D[Cloudinary - Upload & CDN]
+D --> E[Zapier Webhook Trigger]
+E --> F[Buffer API - Auto Publishing]
+F --> G[Social Media Platforms]
 G --> H[Feedback & Optimization Agent]
 H --> A
 
-subgraph Infrastructure
-  I[Redis - Task Queue]
-  J[Celery Workers]
-  K[PostgreSQL - Data Store]
-  L[FAISS - Vector DB]
+subgraph Backend Infrastructure
+  I[Redis - Queue]
+  J[Celery Workers - Async Tasks]
+  K[PostgreSQL - Structured Storage]
+  L[FAISS - Vector Index]
 end
 
 A --> I
