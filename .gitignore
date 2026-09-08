@@ -1,0 +1,60 @@
+# Secrets - never commit
+.env
+.env.*
+!.env.example
+!.env.template
+*.pickle
+*.pem
+*.key
+*.pfx
+*credentials*.json
+*service*account*.json
+service_account*.json
+datascrapex-*.json
+*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].json
+secrets/
+.auth/
+
+# Python
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+npm-debug.log*
+
+# Generated output / local data / test artifacts
+generated_*/
+uploads/
+*.db
+*.sqlite
+avvo_expert_features_test_report_*.json
+*_test_report_*.json
+data/faiss_index/
+*.faiss
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+*.log
+logs/

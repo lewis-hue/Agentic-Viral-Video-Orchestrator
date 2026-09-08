@@ -1,0 +1,74 @@
+{
+  "tips": [
+    {
+      "id": 1,
+      "category": "Hook",
+      "tip": "Start with a question or surprising fact",
+      "description": "Capture attention in the first 3 seconds with something that piques curiosity.",
+      "example": "Did you know that 90% of viral videos start with a question?"
+    },
+    {
+      "id": 2,
+      "category": "Storytelling",
+      "tip": "Use the Hero's Journey structure",
+      "description": "Structure your content with a beginning (setup), middle (conflict), and end (resolution) to keep viewers engaged.",
+      "example": "Show a problem, build tension, then provide a satisfying solution."
+    },
+    {
+      "id": 3,
+      "category": "Visuals",
+      "tip": "Use high-contrast colors and dynamic movements",
+      "description": "Bright, contrasting visuals and quick cuts help in grabbing attention on fast-scrolling platforms.",
+      "example": "Incorporate text overlays, emojis, and fast-paced edits."
+    },
+    {
+      "id": 4,
+      "category": "Hashtags",
+      "tip": "Mix trending and niche hashtags",
+      "description": "Use 3-5 relevant hashtags, including one trending and others specific to your content.",
+      "example": "#Viral #LifeHacks #QuickTips"
+    },
+    {
+      "id": 5,
+      "category": "Length",
+      "tip": "Keep videos under 60 seconds",
+      "description": "Short-form content performs better; aim for 15-30 seconds for maximum engagement.",
+      "example": "TikTok videos under 30 seconds get 50% more views."
+    },
+    {
+      "id": 6,
+      "category": "Music",
+      "tip": "Use trending audio",
+      "description": "Leverage popular sounds to increase discoverability.",
+      "example": "Check TikTok's trending sounds and incorporate them."
+    },
+    {
+      "id": 7,
+      "category": "Call to Action",
+      "tip": "End with a clear CTA",
+      "description": "Encourage viewers to like, comment, share, or follow.",
+      "example": "Like if you agree! Comment your thoughts below."
+    },
+    {
+      "id": 8,
+      "category": "Emotion",
+      "tip": "Evoke strong emotions",
+      "description": "Content that makes people laugh, cry, or feel inspired spreads faster.",
+      "example": "Humor, surprise, or relatability drives shares."
+    },
+    {
+      "id": 9,
+      "category": "Timing",
+      "tip": "Post at peak times",
+      "description": "Post when your audience is most active, typically evenings or weekends.",
+      "example": "For global audience, post between 6-9 PM local time."
+    },
+    {
+      "id": 10,
+      "category": "Collaboration",
+      "tip": "Collaborate with influencers",
+      "description": "Partner with creators in your niche to reach new audiences.",
+      "example": "Duets or shoutouts can boost visibility."
+    }
+  ]
+}
