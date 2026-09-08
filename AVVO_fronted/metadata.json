@@ -1,0 +1,7 @@
+{
+  "name": "VIRALISH - AI Viral Video Studio",
+  "description": "An AI-powered multi-agent system designed to streamline the entire lifecycle of creating viral short-form videos, from trend discovery and story ideation to video generation, optimization, and publishing.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

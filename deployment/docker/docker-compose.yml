@@ -1,0 +1,132 @@
+version: '3.8'
+
+networks:
+  viralish_network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+  uploads_data:
+
+services:
+  # Infrastructure Services
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6380:6379"
+    networks:
+      - viralish_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - viralish_network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Service 1: API Gateway (FastAPI)
+  api_gateway:
+    build:
+      context: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/backend
+      dockerfile: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/deployment/docker/Dockerfile.backend
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - MONGO_URL=mongodb://admin:password@mongo:27017
+    depends_on:
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      - viralish_network
+    volumes:
+      - uploads_data:/app/uploads
+
+  # Service 2: Asynchronous Worker (Celery)
+  worker:
+    build:
+      context: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/backend
+      dockerfile: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/deployment/docker/Dockerfile.backend
+    command: celery -A app.celery_app worker --loglevel=info
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - MONGO_URL=mongodb://admin:password@mongo:27017
+    depends_on:
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      - viralish_network
+    volumes:
+      - uploads_data:/app/uploads
+
+  # Service 3: Real-time Chat Service (WebSockets)
+  chat_service:
+    build:
+      context: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/backend
+      dockerfile: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/deployment/docker/Dockerfile.backend
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8001
+    ports:
+      - "8001:8001"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - MONGO_URL=mongodb://admin:password@mongo:27017
+    depends_on:
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      - viralish_network
+    volumes:
+      - uploads_data:/app/uploads
+
+  # Service 4: Video Uploader Service
+  video_uploader:
+    build:
+      context: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/backend/video-uploader-service
+      dockerfile: Dockerfile
+    command: python -m uvicorn app:app --host 0.0.0.0 --port 8002
+    ports:
+      - "8002:8002"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - MONGO_URL=mongodb://admin:password@mongo:27017
+    depends_on:
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    networks:
+      - viralish_network
+    volumes:
+      - uploads_data:/app/uploads
+
+  # Service 5: Frontend (React served by Nginx)
+  frontend:
+    build:
+      context: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/viralish_fronted
+      dockerfile: /home/lewis254/Downloads/AI ENGINEERING PROJECTS/VIRALISH/deployment/docker/Dockerfile.frontend
+    ports:
+      - "3001:80"
+    networks:
+      - viralish_network

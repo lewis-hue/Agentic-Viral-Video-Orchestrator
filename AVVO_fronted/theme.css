@@ -1,0 +1,213 @@
+/* Light Theme */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F8FA;
+  --accent-primary: #0075FF;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-family-main: 'Poppins', sans-serif;
+
+  /* Sizing & Effects */
+  --border-radius-soft: 10px; /* For cards/pop-ups */
+  --border-radius-pill: 30px; /* For buttons */
+  --shadow-subtle: 0px 10px 30px rgba(0, 0, 0, 0.07);
+
+  /* Map to existing variables for compatibility */
+  --background: var(--bg-primary);
+  --background-secondary: var(--bg-secondary);
+  --background-tertiary: rgba(247, 248, 250, 0.9);
+  --foreground: var(--bg-primary);
+  --foreground-secondary: rgba(247, 248, 250, 0.99);
+
+  --primary: var(--accent-primary);
+  --primary-hover: #0056CC;
+  --primary-light: rgba(0, 117, 255, 0.1);
+  --primary-dark: var(--accent-primary);
+
+  --accent: var(--accent-primary);
+  --accent-hover: #0056CC;
+  --accent-light: rgba(0, 117, 255, 0.1);
+  --accent-dark: var(--accent-primary);
+
+  --highlight: var(--accent-primary);
+  --highlight-hover: #0056CC;
+  --highlight-light: rgba(0, 117, 255, 0.1);
+
+  --success: rgba(0, 117, 255, 0.1);
+  --warning: var(--accent-primary);
+  --error: #DC3545;
+  --info: var(--accent-primary);
+
+  --text: var(--text-primary);
+  --text-secondary: var(--text-secondary);
+  --text-muted: #94A3B8;
+  --text-inverse: var(--color-white);
+
+  --border: rgba(100, 116, 139, 0.2);
+  --border-light: rgba(100, 116, 139, 0.1);
+  --surface: var(--bg-primary);
+  --surface-hover: var(--bg-secondary);
+
+  --spotlight-primary: rgba(0, 117, 255, 0.6);
+  --spotlight-accent: rgba(0, 117, 255, 0.5);
+  --spotlight-highlight: rgba(0, 117, 255, 0.4);
+  --spotlight-white: rgba(255, 255, 255, 0.98);
+
+  --gradient-1: var(--accent-primary);
+  --gradient-2: var(--bg-primary);
+  --gradient-3: var(--accent-primary);
+  --gradient-4: var(--bg-primary);
+  --gradient-5: var(--accent-primary);
+}
+
+/* Global Styles */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-family-main);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-family-main);
+}
+
+h1 { font-size: 3.75rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Buttons */
+button, .btn {
+  font-family: var(--font-family-main);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  border-radius: var(--border-radius-pill);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 15px 30px rgba(0, 117, 255, 0.2);
+}
+
+.btn-secondary {
+  background-color: var(--bg-primary);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-primary);
+  color: var(--color-white);
+  border-color: var(--accent-primary);
+}
+
+.btn-accent {
+  background-color: var(--accent-primary);
+  color: var(--color-white);
+  border: 1px solid var(--accent-primary);
+}
+
+.btn-accent:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Pop-ups & Panels */
+.modal, .popup, .overlay {
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius-soft);
+  box-shadow: var(--shadow-subtle);
+  border: none;
+  padding: 2.5rem;
+}
+
+.modal-content, .popup-content {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.frosted-glass-panel {
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius-soft);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  color: var(--text-primary);
+}
+
+/* Icons */
+.icon {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.icon:hover {
+  color: var(--accent-primary);
+  transform: scale(1.1);
+}
+
+/* Header */
+header {
+  background-color: var(--bg-primary);
+  border-color: var(--border);
+}
+
+/* Sidebar */
+.bg-card {
+  background-color: var(--bg-primary);
+  border-color: var(--border);
+}
+
+/* Notification Center */
+.frosted-glass-panel {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Video Player */
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+/* Other */
+a {
+  color: var(--accent-primary);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}

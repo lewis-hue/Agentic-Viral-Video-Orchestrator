@@ -1,0 +1,15 @@
+from .agents import router as agents
+from .auth import router as auth
+from .chat import router as chat
+from .collaboration import router as collaboration
+from .comments import router as comments
+from .criticism import router as criticism
+from .dashboard import router as dashboard
+from .knowledge_base import router as knowledge_base
+from .notifications import router as notifications
+from .optimization import router as optimization
+from .prompts import router as prompts
+from .publisher import router as publisher
+from .review import router as review
+from .simulation import router as simulation
+from .video import router as video
